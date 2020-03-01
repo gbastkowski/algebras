@@ -1,0 +1,108 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{cite}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usetheme{Berkeley}
+\usecolortheme{spruce}
+
+\title{Programming with Categories}
+\subtitle{Yet another attempt to teach monads}
+\author{Gunnar Bastkowski}
+\date{\today}
+
+\begin{document}
+\maketitle
+\frame{\tableofcontents[currentsection]}
+
+\section{Introduction}
+
+
+\section{Category Theory}
+\begin{frame}
+  \frametitle{What is Category Theory?}
+
+  S. Awodey approaches the term {\it category theory} as follows\footnote{\cite{awodey2010category}}:
+  \begin{quote}
+    As a first approximation, one could say that category theory
+    is the mathematical study of (abstract) {algebras of functions}.
+  \end{quote}
+
+  \begin{center}
+    Category theory addresses the question:\\
+    {\bf How can we combine functions to create new functions?}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is it good for?}
+  \begin{itemize}
+  \item Functional programming is about function composition
+  \item Gives us tools to manipulate functions
+  \item Provides a vocabulary like {\it Design Patterns}.\\
+    But {\bf much} more powerful
+  \end{itemize}
+
+\end{frame}
+
+\subsection{Vocabulary}
+\begin{frame}[fragile]
+  \frametitle{Vocabulary}
+  \begin{itemize}
+  \item objects ($A$, $B$) and Arrows ($f$) 
+    \begin{flushright}
+      \begin{tikzcd}
+        A \arrow[r, "f"] & B \\
+      \end{tikzcd}
+    \end{flushright}
+  \item composition ($g \circ f$)
+    \begin{flushright}
+      \begin{tikzcd}
+        A \arrow[r, "f"] \arrow[rd, "g \circ f"'] & B \arrow[d, "g"] \\
+                                              & C                \\
+      \end{tikzcd}
+    \end{flushright}
+  \item identity ($id$)
+    \begin{flushright}
+      \begin{tikzcd}
+        A \arrow[r, "id"] & A \\
+      \end{tikzcd}
+    \end{flushright}
+  \end{itemize}
+\end{frame}
+
+\subsection{Laws}
+\begin{frame}[fragile]
+  \frametitle{Laws}
+  \begin{itemize}
+  \item arrows compose \\
+    For every $f: A \to B, g: B \to C$, \\
+    there exists a composition $g \circ f: A \to C$
+  \item associativity \\
+    $(A \to B) \to C = A \to (B \to C) = A \to B \to C$
+  \item identity ($id$) \\
+    For every $A_1, A_2$, with $A_1$ equal\footnote{up to isomorphism} to $A_2$,
+    $f_1: A_1 \to A_2 = f_2: A_2 \to A_1 = id$
+  \end{itemize}
+\end{frame}
+
+\subsection{Challenges}
+\begin{frame}
+  \frametitle{Challenges}
+\end{frame}
+
+\section{References}
+\begin{frame}
+  \frametitle{References}
+  \begin{itemize}
+  \item https://medium.com/@arjun.dhawan/composing-doobie-programs-5337695fd77b
+  \item http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf
+  \item https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \bibliography{references}
+  \bibliographystyle{plain}
+\end{frame}
+\end{document}
